@@ -7,9 +7,10 @@ function Navbar() {
           Store
         </div>
         <div className="flex h-14 font-white font-bold items-center gap-x-9 mr-20">
-          <div>Home</div>
-          <div>About</div>
-          <div>Purchase</div>
+          <div className="hover:text-white">Home</div>
+          <div className="hover:text-white">About</div>
+          <div className="hover:text-white">Foods</div>
+          <div className="hover:text-white">Cart</div>
         </div>
       </div>
     </>
