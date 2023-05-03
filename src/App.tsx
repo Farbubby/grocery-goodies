@@ -1,11 +1,14 @@
 import Navbar from "./components/Navbar"
 import Card from "./components/Card"
+import FoodTypes from "./components/FoodTypes"
 
 function App() {
+  const choices = ['Home', 'About', 'Cart']
+  const foods = ['Meats', 'Vegetables', 'Fruits', 'Drinks']
   return (
-    <div>
-      <Navbar />
-      <Card product="Chicken" price="12.1"/>
+    <div className="font-mono">
+      <Navbar list={choices}/>
+      <FoodTypes list={foods}/>
     </div>
   )
 }

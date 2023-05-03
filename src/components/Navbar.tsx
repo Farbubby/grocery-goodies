@@ -1,4 +1,10 @@
-function Navbar() {
+interface Props {
+  list: String[];
+}
+
+
+function Navbar({list}: Props) {
+  const navbarList = list.map((items) => <button className="hover:text-white duration-300">{items}</button>)
   return (
     <>
       <div className="flex w-full h-14 bg-red-400 border-b border-black">
@@ -7,10 +13,7 @@ function Navbar() {
           Store
         </div>
         <div className="flex h-14 font-white font-bold items-center gap-x-9 mr-20">
-          <div className="hover:text-white">Home</div>
-          <div className="hover:text-white">About</div>
-          <div className="hover:text-white">Foods</div>
-          <div className="hover:text-white">Cart</div>
+          {navbarList}
         </div>
       </div>
     </>
