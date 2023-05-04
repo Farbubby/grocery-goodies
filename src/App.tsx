@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
+import Menu from "./components/Menu";
 import FoodTypes from "./components/FoodTypes";
 
 function App() {

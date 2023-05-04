@@ -10,7 +10,7 @@ function Card({ product, price }: Props) {
         <div className="h-44 w-32 ml-2 border border-black"></div>
         <div className="ml-11 items-center flex-col font-bold">
           <div className="text-center">{product}</div>
-          <div className="text-center">${price}</div>
+          <div className="text-center">{price}</div>
         </div>
       </div>
     </>
