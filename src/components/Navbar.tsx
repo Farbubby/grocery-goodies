@@ -2,9 +2,10 @@ interface Props {
   list: String[];
 }
 
-
-function Navbar({list}: Props) {
-  const navbarList = list.map((items) => <button className="hover:text-white duration-300">{items}</button>)
+function Navbar({ list }: Props) {
+  const navbarList = list.map((items) => (
+    <button className="hover:text-white duration-300">{items}</button>
+  ));
   return (
     <>
       <div className="flex w-full h-14 bg-red-400 border-b border-black">
@@ -17,7 +18,7 @@ function Navbar({list}: Props) {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
