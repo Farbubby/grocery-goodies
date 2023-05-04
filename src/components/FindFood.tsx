@@ -5,7 +5,7 @@ interface Props {
   list: String[];
 }
 
-function FoodTypes({ list }: Props) {
+function FindFood({ list }: Props) {
   const [option, setOption] = useState("");
   const foodList = list.map((items) => (
     <button className="border border-black rounded-lg px-2 py-0.5 hover:bg-black hover:text-white duration-300" 
@@ -26,4 +26,4 @@ function FoodTypes({ list }: Props) {
   );
 }
 
-export default FoodTypes;
+export default FindFood;

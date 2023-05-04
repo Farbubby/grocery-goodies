@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import Menu from "./components/Menu";
-import FoodTypes from "./components/FoodTypes";
+import FindFood from "./components/FindFood";
 
 function App() {
   const choices = ["Home", "About", "Find", "Cart"];
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="font-mono">
       <Navbar list={choices} />
-      <FoodTypes list={foods} />
+      <FindFood list={foods} />
     </div>
   );
 }
