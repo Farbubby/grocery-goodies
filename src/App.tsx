@@ -1,5 +1,4 @@
 import Navbar from "./components/Navbar";
-import Card from "./components/Card";
 import Menu from "./components/Menu";
 import FindFood from "./components/FindFood";
 
