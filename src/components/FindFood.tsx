@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Menu from "./Menu";
 
 interface Props {
   list: String[];
