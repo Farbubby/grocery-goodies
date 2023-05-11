@@ -7,7 +7,7 @@ function App() {
   const foods = ["Meats", "Vegetables", "Fruits", "Drinks"];
   return (
     <div className="font-mono">
-      <Navbar list={choices} />
+      <Navbar />
     </div>
   );
 }

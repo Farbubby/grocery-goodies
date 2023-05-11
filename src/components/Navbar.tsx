@@ -1,11 +1,6 @@
-interface Props {
-  list: String[];
-}
+import { Link } from "@tanstack/router";
 
-function Navbar({ list }: Props) {
-  const navbarList = list.map((items) => (
-    <button className="hover:text-white duration-300">{items}</button>
-  ));
+function Navbar() {
   return (
     <>
       <div className="flex flex-row w-full h-14 bg-red-400 border-b border-black">
@@ -14,7 +9,9 @@ function Navbar({ list }: Props) {
           Store
         </div>
         <div className="flex flex-row h-14 font-white font-bold items-center gap-x-9 mr-20">
-          {navbarList}
+          <a href="/" className="hover:text-white duration-300">Home</a>
+          <a href="food" className="hover:text-white duration-300">Find</a>
+          <button className="hover:text-white duration-300">Cart</button>
         </div>
       </div>
     </>
