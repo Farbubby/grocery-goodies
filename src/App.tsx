@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import FindFood from "./components/FindFood";
+import FoodSelection from "./components/FoodSelection";
 import Home from "./components/Home";
 
 function App() {
@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="font-mono">
       <Navbar list={choices} />
-      <Home />
     </div>
   );
 }
