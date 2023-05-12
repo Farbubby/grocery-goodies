@@ -4,16 +4,17 @@ interface Props {
   list: String[];
 }
 
-function FindFood({ list }: Props) {
+function FoodSelection({ list }: Props) {
   const [option, setOption] = useState(0);
+  let str = "border border-black rounded-lg px-2 py-0.5 duration-300";
   const foodList = list.map((items, index) => (
     <button
       className={
         option === index
-          ? "border border-black rounded-lg px-2 py-0.5 bg-black text-white duration-300"
-          : "border border-black rounded-lg px-2 py-0.5 hover:bg-black hover:text-white duration-300"
+          ? str.concat(" bg-black text-white")
+          : str.concat(" hover:bg-black hover:text-white")
       }
-      onClick={(items) => setOption(index)}
+      onClick={() => setOption(index)}
     >
       {items}
     </button>
@@ -26,4 +27,4 @@ function FindFood({ list }: Props) {
   );
 }
 
-export default FindFood;
+export default FoodSelection;
