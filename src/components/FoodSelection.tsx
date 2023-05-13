@@ -5,19 +5,15 @@ interface Props {
 }
 
 function FoodSelection({ list }: Props) {
-  const [option, setOption] = useState("Meats");
-  let str = "border border-black rounded-lg px-2 py-0.5 duration-300";
   const foodList = list.map((items) => (
-    <button
+    <a
+      href={"/food/" + items.toLowerCase()}
       className={
-        option === items
-          ? str.concat(" bg-black text-white")
-          : str.concat(" hover:bg-black hover:text-white")
+        "border border-black rounded-lg px-2 py-0.5 duration-300 hover:bg-black hover:text-white"
       }
-      onClick={() => setOption(items)}
     >
       {items}
-    </button>
+    </a>
   ));
 
   return (
