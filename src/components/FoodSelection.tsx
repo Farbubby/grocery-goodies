@@ -7,7 +7,7 @@ interface Props {
 function FoodSelection({ list }: Props) {
   const foodList = list.map((items) => (
     <a
-      href={"/food/" + items.toLowerCase()}
+      href={"/find/" + items.toLowerCase()}
       className={
         "border border-black rounded-lg px-2 py-0.5 duration-300 hover:bg-black hover:text-white"
       }

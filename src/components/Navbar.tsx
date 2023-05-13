@@ -12,7 +12,7 @@ function Navbar() {
           <a href="/" className="hover:text-white duration-300">
             Home
           </a>
-          <a href="/food" className="hover:text-white duration-300">
+          <a href="/find" className="hover:text-white duration-300">
             Find
           </a>
           <button className="hover:text-white duration-300">Cart</button>
