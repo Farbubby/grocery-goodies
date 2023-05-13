@@ -11,6 +11,7 @@ function FoodSelection({ list }: Props) {
       className={
         "border border-black rounded-lg px-2 py-0.5 duration-300 hover:bg-black hover:text-white"
       }
+      key={items}
     >
       {items}
     </a>
