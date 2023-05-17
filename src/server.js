@@ -1,5 +1,8 @@
 import express from "express";
+import cors from "cors";
+
 const app = express();
+app.use(cors());
 
 let foodList = [
   { type: "Fruit", name: "Apple", price: 1.99 },
