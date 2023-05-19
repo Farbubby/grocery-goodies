@@ -1,20 +1,24 @@
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 
+interface Props {
+  type: string;
+}
+
 const queryClient = new QueryClient();
 
-function FoodList() {
+function FoodList({ type }: Props) {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <GetList />
+        <GetList type={type}/>
       </QueryClientProvider>
     </>
   );
 }
 
-export function GetList() {
+export function GetList({ type }: { type: string}) {
   const { isLoading, error, data } = useQuery("list", () =>
-    fetch("http://localhost:3000").then((res) => res.json())
+    fetch("http://localhost:3000/" + type.toLowerCase()).then((res) => res.json())
   );
 
   if (isLoading) return <div>Loading...</div>;

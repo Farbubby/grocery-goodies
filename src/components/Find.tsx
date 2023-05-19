@@ -6,7 +6,7 @@ function Find() {
   return (
     <>
       <FoodSelection list={foods} />
-      <FoodList />
+      <FoodList type={"fruits"}/>
     </>
   );
 }
