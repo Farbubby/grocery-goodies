@@ -18,10 +18,23 @@ let foodList = [
   { type: "Fruit", name: "Grape", price: 2.99 },
   { type: "Vegetable", name: "Potato", price: 0.99 },
   { type: "Vegetable", name: "Tomato", price: 1.99 },
+  { type: "Drink", name: "Coke", price: 4.99 },
 ];
 
-app.get("/", (req, res) => {
+app.get("/meats", (req, res) => {
   res.send(foodList.filter((food) => food.type === "Meat"));
+});
+
+app.get("/vegetables", (req, res) => {
+  res.send(foodList.filter((food) => food.type === "Vegetable"));
+});
+
+app.get("/fruits", (req, res) => {
+  res.send(foodList.filter((food) => food.type === "Fruit"));
+});
+
+app.get("/drinks", (req, res) => {
+  res.send(foodList.filter((food) => food.type === "Drink"));
 });
 
 const port = process.env.PORT || 3000;
