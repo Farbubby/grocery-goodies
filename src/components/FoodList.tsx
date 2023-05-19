@@ -10,15 +10,17 @@ function FoodList({ type }: Props) {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <GetList type={type}/>
+        <GetList type={type} />
       </QueryClientProvider>
     </>
   );
 }
 
-export function GetList({ type }: { type: string}) {
+export function GetList({ type }: { type: string }) {
   const { isLoading, error, data } = useQuery("list", () =>
-    fetch("http://localhost:3000/" + type.toLowerCase()).then((res) => res.json())
+    fetch("http://localhost:3000/" + type.toLowerCase()).then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) return <div>Loading...</div>;
@@ -26,11 +28,7 @@ export function GetList({ type }: { type: string}) {
 
   const list = data.map((item: any) => <div key={item.name}>{item.name}</div>);
 
-  return (
-    <>
-      {list}
-    </>
-  );
+  return <>{list}</>;
 }
 
 export default FoodList;
