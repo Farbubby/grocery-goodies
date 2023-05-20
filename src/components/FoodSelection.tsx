@@ -23,8 +23,11 @@ function FoodSelection({ list }: Props) {
 
   return (
     <>
-      <div className="mt-4 flex flex-row gap-5 ml-2">{foodList}</div>
-      <div>
+      <div className="mt-4 flex flex-row gap-5 ml-2">
+        {foodList}
+      </div>
+      <div className="flex flex-row justify-center align-center mt-8 text-4xl font-bold">{option}</div>
+      <div className="flex flex-row ml-2 mt-8 justify-center">
         {option === list[0] && <FoodList type={option} />}
         {option === list[1] && <FoodList type={option} />}
         {option === list[2] && <FoodList type={option} />}

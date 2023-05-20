@@ -26,9 +26,19 @@ export function GetList({ type }: { type: string }) {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>An error has occurred: </div>;
 
-  const list = data.map((item: any) => <div key={item.name}>{item.name}</div>);
+  const list = data.map((item: any) => (
+    <div
+      className="p-1 border border-black transition ease-in-out hover:scale-105 hover:shadow-lg rounded-lg"
+      key={item.name}>
+      {item.name}
+    </div>
+  ));
 
-  return <>{list}</>;
+  return (
+    <>
+      <div className="grid grid-cols-4 gap-y-4 gap-x-10 w-max">{list}</div>
+    </>
+  );
 }
 
 export default FoodList;
