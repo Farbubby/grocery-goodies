@@ -31,9 +31,9 @@ export function GetList({ type }: { type: string }) {
       className="flex flex-col p-1 border border-black transition ease-in-out hover:scale-105 hover:shadow-lg rounded-lg w-48 text-center"
       key={item.name}>
       {item.name} - ${item.price}
-      <div className="flex flex-row text-2xl justify-center gap-4 h-max">
-        <button className="border border-black">+</button>
-        <button className="border border-black">-</button>
+      <div className="flex flex-row justify-center gap-4">
+        <button className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300">+</button>
+        <button className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300">-</button>
       </div>
     </div>
   ));
