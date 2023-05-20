@@ -38,6 +38,8 @@ let foodList = [
   { type: "Vegetable", name: "Pepper", price: 1.99 },
 ];
 
+let cart = [];
+
 app.get("/meats", (req, res) => {
   res.send(foodList.filter((food) => food.type === "Meat"));
 });
@@ -52,6 +54,11 @@ app.get("/fruits", (req, res) => {
 
 app.get("/drinks", (req, res) => {
   res.send(foodList.filter((food) => food.type === "Drink"));
+});
+
+app.post("/cart", (req, res) => {
+  cart.push(req.body);
+  res.send(cart);
 });
 
 const port = process.env.PORT || 3000;
