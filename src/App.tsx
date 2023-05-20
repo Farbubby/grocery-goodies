@@ -1,13 +1,20 @@
 import Navbar from "./components/Navbar";
-import FoodSelection from "./components/FoodSelection";
-import Home from "./components/Home";
+import { RouterProvider } from "@tanstack/router";
+import setRoutes from "./client-routes";
+
+declare module "@tanstack/router" {
+  interface Register {
+    router: typeof router;
+  }
+}
+
+const router = setRoutes();
 
 function App() {
-  const choices = ["Home", "Find", "Cart"];
-  const foods = ["Meats", "Vegetables", "Fruits", "Drinks"];
   return (
     <div className="font-mono">
       <Navbar />
+      <RouterProvider router={router} />
     </div>
   );
 }
