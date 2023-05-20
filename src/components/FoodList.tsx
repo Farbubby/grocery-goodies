@@ -28,9 +28,13 @@ export function GetList({ type }: { type: string }) {
 
   const list = data.map((item: any) => (
     <div
-      className="p-1 border border-black transition ease-in-out hover:scale-105 hover:shadow-lg rounded-lg"
+      className="flex flex-col p-1 border border-black transition ease-in-out hover:scale-105 hover:shadow-lg rounded-lg w-48 text-center"
       key={item.name}>
-      {item.name}
+      {item.name} - ${item.price}
+      <div className="flex flex-row text-2xl justify-center gap-4 h-max">
+        <button className="border border-black">+</button>
+        <button className="border border-black">-</button>
+      </div>
     </div>
   ));
 
