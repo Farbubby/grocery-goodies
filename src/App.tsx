@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import { RouterProvider } from "@tanstack/router";
 import setRoutes from "./client-routes";
+import { QueryClient, QueryClientProvider} from "@tanstack/react-query";
 
 declare module "@tanstack/router" {
   interface Register {
@@ -9,12 +10,15 @@ declare module "@tanstack/router" {
 }
 
 const router = setRoutes();
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <div className="font-mono">
-      <Navbar />
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <Navbar />
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </div>
   );
 }

@@ -1,27 +1,17 @@
-import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 interface Props {
   type: string;
 }
 
-const queryClient = new QueryClient();
-
 function FoodList({ type }: Props) {
-  return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <GetList type={type} />
-      </QueryClientProvider>
-    </>
-  );
-}
-
-export function GetList({ type }: { type: string }) {
-  const { isLoading, error, data } = useQuery(['list'], () =>
-    fetch("http://localhost:3000/" + type.toLowerCase()).then((res) =>
-      res.json()
-    )
-  );
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["list"],
+    queryFn: () =>
+      fetch("http://localhost:3000/" + type.toLowerCase()).then((res) =>
+        res.json()
+      ),
+  });
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>An error has occurred: </div>;
@@ -32,8 +22,12 @@ export function GetList({ type }: { type: string }) {
       key={item.name}>
       {item.name} - ${item.price}
       <div className="flex flex-row justify-center gap-4">
-        <button className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300">+</button>
-        <button className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300">-</button>
+        <button className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300">
+          +
+        </button>
+        <button className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300">
+          -
+        </button>
       </div>
     </div>
   ));
