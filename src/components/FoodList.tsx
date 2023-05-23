@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 
 interface Props {
   type: string;
@@ -17,7 +17,7 @@ function FoodList({ type }: Props) {
 }
 
 export function GetList({ type }: { type: string }) {
-  const { isLoading, error, data } = useQuery("list", () =>
+  const { isLoading, error, data } = useQuery(['list'], () =>
     fetch("http://localhost:3000/" + type.toLowerCase()).then((res) =>
       res.json()
     )
