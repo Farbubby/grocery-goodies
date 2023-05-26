@@ -6,7 +6,7 @@ interface Props {
 
 function FoodList({ type }: Props) {
   const { isLoading, isError, error, data } = useQuery({
-    queryKey: ["list"],
+    queryKey: ["list", type],
     queryFn: () =>
       fetch("http://localhost:3000/" + type.toLowerCase()).then((res) =>
         res.json()
