@@ -5,7 +5,7 @@ interface Props {
 }
 
 function FoodList({ type }: Props) {
-  const { isLoading, isError, error, data } = useQuery({
+  const query = useQuery({
     queryKey: ["list", type],
     queryFn: () =>
       fetch("http://localhost:3000/" + type.toLowerCase()).then((res) =>
@@ -13,10 +13,10 @@ function FoodList({ type }: Props) {
       ),
   });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>An error has occurred: {JSON.stringify(error)}</div>;
+  if (query.isLoading) return <div>Loading...</div>;
+  if (query.isError) return <div>An error has occurred: {JSON.stringify(query.error)}</div>;
 
-  const list = data.map((item: any) => (
+  const list = query.data.map((item: any) => (
     <div
       className="flex flex-col p-1 border border-black transition ease-in-out hover:scale-105 hover:shadow-lg rounded-lg w-48 text-center"
       key={item.name}>
