@@ -1,20 +1,28 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { getList, getCart, addToCart } from "../api/functions";
 
 interface Props {
   type: string;
 }
 
 function FoodList({ type }: Props) {
+  const queryClient = useQueryClient();
+
   const query = useQuery({
     queryKey: ["list", type],
-    queryFn: () =>
-      fetch("http://localhost:3000/" + type.toLowerCase()).then((res) =>
-        res.json()
-      ),
+    queryFn: () => getList(type),
+  });
+
+  const mutation = useMutation({
+    mutationFn: (data: any) => addToCart(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["cart"]);
+    },
   });
 
   if (query.isLoading) return <div>Loading...</div>;
-  if (query.isError) return <div>An error has occurred: {JSON.stringify(query.error)}</div>;
+  if (query.isError)
+    return <div>An error has occurred: {JSON.stringify(query.error)}</div>;
 
   const list = query.data.map((item: any) => (
     <div
@@ -22,7 +30,9 @@ function FoodList({ type }: Props) {
       key={item.name}>
       {item.name} - ${item.price}
       <div className="flex flex-row justify-center gap-4">
-        <button className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300">
+        <button
+          className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300"
+          onClick={() => mutation.mutate(item)}>
           +
         </button>
         <button className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300">
