@@ -58,9 +58,13 @@ app.get("/drinks", (req, res) => {
   res.send(foodList.filter((food) => food.type === "Drinks"));
 });
 
+app.get("/cart", (req, res) => {
+  res.send(cart);
+});
+
 app.post("/additem", (req, res) => {
   cart.push(req.body);
-  res.send(cart);
+  res.send("Successfully added item to cart!");
 });
 
 const port = process.env.PORT || 3000;
