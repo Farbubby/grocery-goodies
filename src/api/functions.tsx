@@ -1,9 +1,11 @@
 export function getList(type: string) {
-  return fetch(`http://localhost:3000/${type}`).then((res) => res.json());
+  return fetch(`http://localhost:3000/getfood?type=${type.toLowerCase()}`).then(
+    (res) => res.json()
+  );
 }
 
 export function getCart() {
-  return fetch("http://localhost:3000/cart").then((res) => res.json());
+  return fetch("http://localhost:3000/getcart").then((res) => res.json());
 }
 
 export function addToCart(data: any) {

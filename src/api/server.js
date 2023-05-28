@@ -42,23 +42,15 @@ let foodList = [
 
 let cart = [];
 
-app.get("/meats", (req, res) => {
-  res.send(foodList.filter((food) => food.type === "Meats"));
+app.get("/getfood", (req, res) => {
+  res.send(
+    foodList.filter(
+      (item) => item.type.toLowerCase() === req.query.type.toLowerCase()
+    )
+  );
 });
 
-app.get("/vegetables", (req, res) => {
-  res.send(foodList.filter((food) => food.type === "Vegetables"));
-});
-
-app.get("/fruits", (req, res) => {
-  res.send(foodList.filter((food) => food.type === "Fruits"));
-});
-
-app.get("/drinks", (req, res) => {
-  res.send(foodList.filter((food) => food.type === "Drinks"));
-});
-
-app.get("/cart", (req, res) => {
+app.get("/getcart", (req, res) => {
   res.send(cart);
 });
 

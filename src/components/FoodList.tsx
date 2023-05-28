@@ -9,7 +9,7 @@ function FoodList({ type }: Props) {
   const queryClient = useQueryClient();
 
   const query = useQuery({
-    queryKey: ["list", type],
+    queryKey: ["food", type],
     queryFn: () => getList(type),
   });
 
