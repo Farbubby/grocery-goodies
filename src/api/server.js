@@ -45,7 +45,9 @@ let cart = [];
 app.get("/getfoodlist", (req, res) => {
   if (req.query.type.toLowerCase() === "all") {
     res.send(foodList);
+    return;
   }
+  
   res.send(
     foodList.filter(
       (item) => item.type.toLowerCase() === req.query.type.toLowerCase()
@@ -58,7 +60,18 @@ app.get("/getcart", (req, res) => {
 });
 
 app.post("/additem", (req, res) => {
+
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].name === req.body.name) {
+      cart[i].amount++;
+      res.send("Successfully added item to cart!");
+      return;
+    }
+  }
+
+  req.body.amount = 1;
   cart.push(req.body);
+
   res.send("Successfully added item to cart!");
 });
 

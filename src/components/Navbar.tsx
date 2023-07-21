@@ -15,7 +15,7 @@ function Navbar() {
           <a href="/find" className="hover:text-white duration-300">
             Find
           </a>
-          <button className="hover:text-white duration-300">Cart</button>
+          <a href="/cart" className="hover:text-white duration-300">Cart</a>
         </div>
       </div>
     </>
