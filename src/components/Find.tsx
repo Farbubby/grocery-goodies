@@ -3,8 +3,9 @@ import FoodList from "./FoodList";
 
 function FoodSelection() {
   const list = ["All", "Meats", "Vegetables", "Fruits", "Drinks"];
-  const [option, setOption] = useState("Meats");
-  const str = "border border-black rounded-lg px-2 py-0.5 duration-300 ";
+  
+  const [option, setOption] = useState("All");
+  const str = "border-2 border-black rounded-lg px-2 py-0.5 duration-300 ";
   const foodList = list.map((items) => (
     <button
       className={

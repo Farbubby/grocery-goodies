@@ -26,16 +26,16 @@ function FoodList({ type }: Props) {
 
   const list = query.data.map((item: any) => (
     <div
-      className="flex flex-col p-1 border border-black transition ease-in-out hover:scale-105 hover:shadow-lg rounded-lg w-48 text-center"
+      className="flex flex-col px-1 py-2 border-2 border-black transition ease-in-out hover:scale-105 hover:shadow-lg rounded-lg w-48 text-center"
       key={item.name}>
       {item.name} - ${item.price}
       <div className="flex flex-row justify-center gap-4">
         <button
-          className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300"
+          className="border-2 border-black h-6 w-6 hover:bg-black hover:text-white duration-300"
           onClick={() => mutation.mutate(item)}>
           +
         </button>
-        <button className="border border-black h-6 w-6 hover:bg-black hover:text-white duration-300">
+        <button className="border-2 border-black h-6 w-6 hover:bg-black hover:text-white duration-300">
           -
         </button>
       </div>
