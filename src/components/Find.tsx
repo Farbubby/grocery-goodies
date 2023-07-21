@@ -1,27 +1,18 @@
 import { useState } from "react";
 import FoodList from "./FoodList";
+import TypeButton from "./TypeButton";
 
 function FoodSelection() {
   const list = ["All", "Meats", "Vegetables", "Fruits", "Drinks"];
-  
   const [option, setOption] = useState("All");
-  const str = "border-2 border-black rounded-lg px-2 py-0.5 duration-300 ";
-  const foodList = list.map((items) => (
-    <button
-      className={
-        items === option
-          ? str + "bg-black text-white"
-          : str + "hover:bg-black hover:text-white"
-      }
-      key={items}
-      onClick={() => setOption(items)}>
-      {items}
-    </button>
+
+  const typeList = list.map((itemType) => (
+    <TypeButton itemType={itemType} state={option} setState={setOption} />
   ));
 
   return (
     <>
-      <div className="mt-4 flex flex-row gap-5 ml-2">{foodList}</div>
+      <div className="mt-4 flex flex-row gap-5 ml-2">{typeList}</div>
       <div className="flex flex-row justify-center align-center mt-8 text-4xl font-bold">
         {option}
       </div>
