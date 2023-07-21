@@ -1,5 +1,5 @@
 export function getList(type: string) {
-  return fetch(`http://localhost:3000/getfood?type=${type.toLowerCase()}`).then(
+  return fetch(`http://localhost:3000/getfoodlist?type=${type.toLowerCase()}`).then(
     (res) => res.json()
   );
 }

@@ -42,7 +42,10 @@ let foodList = [
 
 let cart = [];
 
-app.get("/getfood", (req, res) => {
+app.get("/getfoodlist", (req, res) => {
+  if (req.query.type.toLowerCase() === "all") {
+    res.send(foodList);
+  }
   res.send(
     foodList.filter(
       (item) => item.type.toLowerCase() === req.query.type.toLowerCase()
