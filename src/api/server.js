@@ -47,7 +47,7 @@ app.get("/getfoodlist", (req, res) => {
     res.send(foodList);
     return;
   }
-  
+
   res.send(
     foodList.filter(
       (item) => item.type.toLowerCase() === req.query.type.toLowerCase()
@@ -60,7 +60,6 @@ app.get("/getcart", (req, res) => {
 });
 
 app.post("/additem", (req, res) => {
-
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].name === req.body.name) {
       cart[i].amount++;
@@ -73,6 +72,27 @@ app.post("/additem", (req, res) => {
   cart.push(req.body);
 
   res.send("Successfully added item to cart!");
+});
+
+app.delete("/removeitem", (req, res) => {
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].name === req.body.name) {
+      if (cart[i].amount > 1) {
+        cart[i].amount--;
+        res.send("Successfully removed item from cart!");
+        return;
+      } else {
+        cart.splice(i, 1);
+        res.send("Successfully removed item from cart!");
+        return;
+      }
+    } else {
+      res.send("Item not found in cart!");
+      return;
+    }
+  }
+
+  res.send("Item not found in cart!");
 });
 
 const port = process.env.PORT || 3000;

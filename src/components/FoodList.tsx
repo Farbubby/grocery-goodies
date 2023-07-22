@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getList, getCart, addToCart } from "../api/functions";
+import { getList, getCart, addItem, removeItem } from "../api/functions";
 
 interface Props {
   type: string;
@@ -13,8 +13,15 @@ function FoodList({ type }: Props) {
     queryFn: () => getList(type),
   });
 
-  const mutation = useMutation({
-    mutationFn: (data: any) => addToCart(data),
+  const add = useMutation({
+    mutationFn: (data: any) => addItem(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["cart"]);
+    },
+  });
+
+  const remove = useMutation({
+    mutationFn: (data: any) => removeItem(data),
     onSuccess: () => {
       queryClient.invalidateQueries(["cart"]);
     },
@@ -32,10 +39,12 @@ function FoodList({ type }: Props) {
       <div className="flex flex-row justify-center gap-4">
         <button
           className="border-2 border-black h-6 w-6 hover:bg-black hover:text-white duration-300"
-          onClick={() => mutation.mutate(item)}>
+          onClick={() => add.mutate(item)}>
           +
         </button>
-        <button className="border-2 border-black h-6 w-6 hover:bg-black hover:text-white duration-300">
+        <button
+          className="border-2 border-black h-6 w-6 hover:bg-black hover:text-white duration-300"
+          onClick={() => remove.mutate(item)}>
           -
         </button>
       </div>
