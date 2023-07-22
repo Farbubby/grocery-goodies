@@ -63,7 +63,7 @@ app.post("/additem", (req, res) => {
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
       cart[i].amount++;
-      res.send("Successfully added item to cart!");
+      res.send(cart);
       return;
     }
   }
@@ -71,7 +71,7 @@ app.post("/additem", (req, res) => {
   req.body.amount = 1;
   cart.push(req.body);
 
-  res.send("Successfully added item to cart!");
+  res.send(cart);
 });
 
 app.delete("/removeitem", (req, res) => {
@@ -79,20 +79,14 @@ app.delete("/removeitem", (req, res) => {
     if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
       if (cart[i].amount > 1) {
         cart[i].amount--;
-        res.send("Successfully removed item from cart!");
-        return;
       } else {
         cart.splice(i, 1);
-        res.send("Successfully removed item from cart!");
-        return;
       }
-    } else {
-      res.send("Item not found in cart!");
-      return;
+      break;
     }
   }
 
-  res.send("Item not found in cart!");
+  res.send(cart);
 });
 
 const port = process.env.PORT || 3000;
