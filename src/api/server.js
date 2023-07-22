@@ -61,7 +61,7 @@ app.get("/getcart", (req, res) => {
 
 app.post("/additem", (req, res) => {
   for (let i = 0; i < cart.length; i++) {
-    if (cart[i].name === req.body.name) {
+    if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
       cart[i].amount++;
       res.send("Successfully added item to cart!");
       return;
@@ -76,7 +76,7 @@ app.post("/additem", (req, res) => {
 
 app.delete("/removeitem", (req, res) => {
   for (let i = 0; i < cart.length; i++) {
-    if (cart[i].name === req.body.name) {
+    if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
       if (cart[i].amount > 1) {
         cart[i].amount--;
         res.send("Successfully removed item from cart!");
