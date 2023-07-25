@@ -1,6 +1,6 @@
 import { RootRoute, Route, Router } from "@tanstack/router";
-import Home from "./components/Home";
-import Find from "./components/Find";
+import Home from "./pages/Home";
+import Find from "./pages/Find";
 import Cart from "./components/Cart";
 
 function setRoutes() {

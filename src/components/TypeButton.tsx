@@ -6,7 +6,7 @@ interface Props {
   setState: (itemType: string) => void;
 }
 
-function TypeSelection({ itemType, state, setState }: Props) {
+function TypeButton({ itemType, state, setState }: Props) {
   const str = "border-2 border-black rounded-lg px-2 py-0.5 duration-300 ";
 
   return (
@@ -25,4 +25,4 @@ function TypeSelection({ itemType, state, setState }: Props) {
   );
 }
 
-export default TypeSelection;
+export default TypeButton;
