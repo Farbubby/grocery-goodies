@@ -1,6 +1,6 @@
 import { useState } from "react";
-import FoodList from "./FoodList";
-import TypeButton from "./TypeButton";
+import FoodList from "../components/FoodList";
+import TypeButton from "../components/TypeButton";
 
 function FoodSelection() {
   const list = ["All", "Meats", "Vegetables", "Fruits", "Drinks"];
