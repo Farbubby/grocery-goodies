@@ -3,9 +3,8 @@ import { Link } from "@tanstack/router";
 function Navbar() {
   return (
     <>
-      <div className="flex flex-row w-full h-14 border-b border-black">
-        <div className="flex flex-row p-2 w-14 text-2xl font-bold items-center gap-x-2 mr-auto">
-          <img src="/src/assets/logo.webp" alt="Logo"></img>
+      <div className="flex flex-row w-full h-14 border-orange-300 shadow-lg text-green-300">
+        <div className="flex flex-row w-14 text-2xl font-bold items-center gap-x-2 mr-auto px-4">
           Store
         </div>
         <div className="flex flex-row h-14 font-white font-bold items-center gap-x-9 mr-20">

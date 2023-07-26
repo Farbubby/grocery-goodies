@@ -33,18 +33,18 @@ function FoodList({ type }: Props) {
 
   const list = query.data.map((item: any) => (
     <div
-      className="flex flex-col px-1 py-2 gap-1 border-2 border-black transition ease-in-out hover:scale-105 hover:shadow-lg rounded-lg w-48 text-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-300 to-purple-400"
+      className="flex flex-col px-1 py-2 gap-1 border-2 border-black transition ease-in-out hover:scale-105 hover:shadow-lg rounded-lg w-48 text-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-300 to-gray-600"
       key={item.name}>
       <div>{item.name}</div>
       <div>${item.price}</div>
       <div className="flex flex-row justify-center gap-4">
         <button
-          className="border-2 border-black h-6 w-6 hover:bg-black hover:text-white duration-300"
+          className="border-2 border-black rounded-lg h-6 w-6 hover:bg-orange-300 duration-300"
           onClick={() => add.mutate(item)}>
           +
         </button>
         <button
-          className="border-2 border-black h-6 w-6 hover:bg-black hover:text-white duration-300"
+          className="border-2 border-black rounded-lg h-6 w-6 hover:bg-orange-300 duration-300"
           onClick={() => remove.mutate(item)}>
           -
         </button>

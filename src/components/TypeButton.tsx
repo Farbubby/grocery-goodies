@@ -7,15 +7,15 @@ interface Props {
 }
 
 function TypeButton({ itemType, state, setState }: Props) {
-  const str = "border-2 border-black rounded-lg px-2 py-0.5 duration-300 ";
+  const str = "text-green-300 border-green-300 rounded-lg px-2 py-0.5 duration-300 border shadow-lg";
 
   return (
     <>
       <button
         className={
           itemType === state
-            ? str + "bg-black text-white"
-            : str + "hover:bg-black hover:text-white"
+            ? str + " bg-green-300 text-gray-800"
+            : str + " hover:bg-green-300 hover:text-black"
         }
         key={itemType}
         onClick={() => setState(itemType)}>
