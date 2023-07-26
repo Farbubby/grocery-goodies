@@ -1,6 +1,10 @@
 import { Link } from "@tanstack/router";
+import Cart from "./Cart";
+import { useState } from "react";
 
 function Navbar() {
+  const [toggle, setToggle] = useState(false);
+
   return (
     <>
       <div className="flex flex-row w-full h-14 shadow-lg text-green-300 fixed items-center backdrop-blur">
@@ -14,8 +18,15 @@ function Navbar() {
           <a href="/find" className="hover:text-white duration-300">
             Find
           </a>
-          <button className="hover:text-white duration-300">Cart</button>
+          <button
+            className="hover:text-white duration-300"
+            onClick={() => setToggle(true)}>
+            Cart
+          </button>
         </div>
+      </div>
+      <div className="flex flex-row-reverse">
+        <Cart state={toggle} close={() => setToggle(false)} />
       </div>
     </>
   );
