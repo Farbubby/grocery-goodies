@@ -14,7 +14,7 @@ function TypeButton({ itemType, state, setState }: Props) {
       <button
         className={
           itemType === state
-            ? str + " bg-green-300 text-gray-800"
+            ? str + " bg-gray-600"
             : str + " hover:bg-green-300 hover:text-black"
         }
         key={itemType}

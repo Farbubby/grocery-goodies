@@ -12,8 +12,8 @@ function FoodSelection() {
 
   return (
     <>
-      <div className="mt-4 flex flex-row gap-5 ml-2">{typeList}</div>
-      <div className="flex flex-row justify-center align-center mt-8 text-4xl font-bold text-green-300">
+      <div className="py-20 flex flex-row gap-5 ml-2">{typeList}</div>
+      <div className="flex flex-row justify-center align-center mt-4 text-4xl font-bold text-green-300">
         {option}
       </div>
       <div className="flex flex-row ml-2 mt-8 justify-center">
