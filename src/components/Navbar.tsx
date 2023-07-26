@@ -7,7 +7,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="flex flex-row w-full h-14 shadow-lg text-green-300 fixed items-center backdrop-blur">
+      <div className="flex flex-row w-full h-14 z-20 shadow-lg text-green-300 fixed items-center backdrop-blur">
         <div className="flex flex-row w-14 text-2xl font-bold items-center gap-x-2 mr-auto px-4">
           Store
         </div>

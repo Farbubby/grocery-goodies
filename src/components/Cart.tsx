@@ -30,7 +30,7 @@ function Cart({ state, close }: Props) {
     <>
       <div
         className={
-          "flex flex-col fixed h-screen bg-gray-900 text-green-300 w-1/4 border-l border-green-300" +
+          "flex flex-col fixed h-screen z-30 bg-gray-900 text-green-300 w-1/4 border-l border-green-300" +
           toggle
         }>
         <div className="flex flex-row-reverse p-8 text-xl mb-8">
