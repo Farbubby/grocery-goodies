@@ -27,3 +27,13 @@ export function removeItem(data: any) {
     body: JSON.stringify(data),
   }).then((res) => console.log(res));
 }
+
+export function deleteItem(data: any) {
+  return fetch("http://localhost:3000/deleteitem", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((res) => console.log(res));
+}

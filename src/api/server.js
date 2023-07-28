@@ -89,6 +89,17 @@ app.delete("/removeitem", (req, res) => {
   res.send(cart);
 });
 
+app.delete("/deleteitem", (req, res) => {
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
+      cart.splice(i, 1);
+      break;
+    }
+  }
+
+  res.send(cart);
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log("Listening on port " + port + "!");
