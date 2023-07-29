@@ -10,7 +10,7 @@ export function getCart() {
 
 export function addItem(data: any) {
   return fetch("http://localhost:3000/additem", {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -20,7 +20,17 @@ export function addItem(data: any) {
 
 export function removeItem(data: any) {
   return fetch("http://localhost:3000/removeitem", {
-    method: "DELETE",
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((res) => console.log(res));
+}
+
+export function createItem(data: any) {
+  return fetch("http://localhost:3000/createitem", {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },

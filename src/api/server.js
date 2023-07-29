@@ -59,22 +59,18 @@ app.get("/getcart", (req, res) => {
   res.send(cart);
 });
 
-app.post("/additem", (req, res) => {
+app.put("/additem", (req, res) => {
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
       cart[i].amount++;
-      res.send(cart);
-      return;
+      break;
     }
   }
-
-  req.body.amount = 1;
-  cart.push(req.body);
 
   res.send(cart);
 });
 
-app.delete("/removeitem", (req, res) => {
+app.put("/removeitem", (req, res) => {
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
       if (cart[i].amount > 1) {
@@ -85,6 +81,20 @@ app.delete("/removeitem", (req, res) => {
       break;
     }
   }
+
+  res.send(cart);
+});
+
+app.post("/createitem", (req, res) => {
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
+      res.send("Item is already added");
+      return;
+    }
+  }
+
+  req.body.amount = 1;
+  cart.push(req.body);
 
   res.send(cart);
 });

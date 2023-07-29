@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getList, getCart, addItem, removeItem } from "../api/functions";
+import { getList, getCart, createItem } from "../api/functions";
 
 interface Props {
   type: string;
@@ -13,18 +13,9 @@ function FoodList({ type }: Props) {
     queryFn: () => getList(type),
   });
 
-  const add = useMutation({
-    mutationFn: (data: any) => addItem(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["cart"]);
-    },
-  });
-
-  const remove = useMutation({
-    mutationFn: (data: any) => removeItem(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["cart"]);
-    },
+  const create = useMutation({
+    mutationFn: (item: any) => createItem(item),
+    onSuccess: () => queryClient.invalidateQueries(["cart"]),
   });
 
   if (query.isLoading) return <div>Loading...</div>;
@@ -39,14 +30,9 @@ function FoodList({ type }: Props) {
       <div>${item.price}</div>
       <div className="flex flex-row justify-center gap-4">
         <button
-          className="border-2 border-black rounded-lg h-6 w-6 hover:bg-orange-300 duration-300"
-          onClick={() => add.mutate(item)}>
-          +
-        </button>
-        <button
-          className="border-2 border-black rounded-lg h-6 w-6 hover:bg-orange-300 duration-300"
-          onClick={() => remove.mutate(item)}>
-          -
+          className="border-2 border-black rounded-lg px-2 hover:bg-orange-300 duration-300"
+          onClick={() => create.mutate(item)}>
+          Add item
         </button>
       </div>
     </div>
