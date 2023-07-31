@@ -18,13 +18,7 @@ function setRoutes() {
     component: Find,
   });
 
-  const cartRoute = new Route({
-    getParentRoute: () => rootRoute,
-    path: "cart",
-    component: Cart,
-  });
-
-  const routeTree = rootRoute.addChildren([homeRoute, findRoute, cartRoute]);
+  const routeTree = rootRoute.addChildren([homeRoute, findRoute]);
   const router = new Router({ routeTree });
 
   return router;
