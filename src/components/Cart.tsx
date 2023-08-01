@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getCart, deleteItem, addItem, removeItem } from "../api/functions";
-import Item from "./Item";
+import CartItem from "./CartItem";
 
 interface Props {
   state: boolean;
@@ -26,9 +26,7 @@ function Cart({ state, close }: Props) {
   if (query.isError)
     return <div>An error has occurred: {JSON.stringify(query.error)}</div>;
 
-  const list = query.data.map((item: any) => (
-    <Item item={item} />
-  ));
+  const list = query.data.map((item: any) => <CartItem item={item} />);
 
   return (
     <>

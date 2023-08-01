@@ -3,13 +3,14 @@ import { deleteItem, addItem, removeItem } from "../api/functions";
 
 interface Props {
   item: {
+    type: string;
     name: string;
     price: number;
     amount: number;
   };
 }
 
-function Item({ item }: Props) {
+function CartItem({ item }: Props) {
   const buttonCSS =
     " px-2 border border-green-300 rounded-full hover:text-black hover:bg-green-300 duration-200";
 
@@ -60,4 +61,4 @@ function Item({ item }: Props) {
   );
 }
 
-export default Item;
+export default CartItem;
