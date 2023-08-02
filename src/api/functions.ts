@@ -47,3 +47,13 @@ export function deleteItem(data: any) {
     body: JSON.stringify(data),
   }).then((res) => console.log(res));
 }
+
+export function updateAmount(data: any) {
+  return fetch("http://localhost:3000/updateamount", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((res) => console.log(res));
+}

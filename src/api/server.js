@@ -85,6 +85,17 @@ app.put("/removeitem", (req, res) => {
   res.send(cart);
 });
 
+app.put("/updateamount", (req, res) => {
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
+      cart[i].amount = req.body.amount;
+      break;
+    }
+  }
+
+  res.send(cart);
+});
+
 app.post("/createitem", (req, res) => {
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
