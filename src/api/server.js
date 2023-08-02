@@ -59,33 +59,7 @@ app.get("/getcart", (req, res) => {
   res.send(cart);
 });
 
-app.put("/additem", (req, res) => {
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
-      cart[i].amount++;
-      break;
-    }
-  }
-
-  res.send(cart);
-});
-
-app.put("/removeitem", (req, res) => {
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
-      if (cart[i].amount > 1) {
-        cart[i].amount--;
-      } else {
-        cart.splice(i, 1);
-      }
-      break;
-    }
-  }
-
-  res.send(cart);
-});
-
-app.put("/updateamount", (req, res) => {
+app.put("/updateitem", (req, res) => {
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].name.toLowerCase() === req.body.name.toLowerCase()) {
       cart[i].amount = req.body.amount;

@@ -1,11 +1,5 @@
-import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import {
-  deleteItem,
-  addItem,
-  removeItem,
-  updateAmount,
-} from "../api/functions";
+import { updateItem, deleteItem } from "../api/functions";
 
 interface Props {
   item: {
@@ -17,29 +11,13 @@ interface Props {
 }
 
 function CartItem({ item }: Props) {
-  const [amount, setAmount] = useState(item.amount);
-
   const buttonCSS =
     " px-2 border border-green-300 rounded-full hover:text-black hover:bg-green-300 duration-200";
 
   const queryClient = useQueryClient();
 
-  const addOne = useMutation({
-    mutationFn: (data: any) => addItem(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["cart"]);
-    },
-  });
-
   const update = useMutation({
-    mutationFn: (data: any) => updateAmount(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["cart"]);
-    },
-  });
-
-  const removeOne = useMutation({
-    mutationFn: (data: any) => removeItem(data),
+    mutationFn: (data: any) => updateItem(data),
     onSuccess: () => {
       queryClient.invalidateQueries(["cart"]);
     },
@@ -55,7 +33,7 @@ function CartItem({ item }: Props) {
   return (
     <div className="flex flex-row gap-4">
       <button onClick={() => remove.mutate(item)}>X</button>
-      <div className="flex flex-col px-4 py-2 border-l border-green-300 gap-2">
+      <div className="flex flex-col px-4 py-4 border border-green-300 rounded-xl gap-2">
         <div className="flex flex-row gap-24 max-w-xl border-b border-green-300 pb-1">
           <div className="flex flex-col">
             <div>{item.name}</div>
@@ -67,31 +45,29 @@ function CartItem({ item }: Props) {
           <form className="flex flex-row gap-2">
             <label>Amount:</label>
             <input
+              id={item.name + "amount"}
               type="number"
               min="1"
               max="99999"
-              className="border border-green-300 bg-black w-20 rounded-lg px-2"
-              onChange={(e) => {
-                e.preventDefault();
-                const amounts = parseInt(e.target.value);
-
-                if (amounts > 0 && amounts <= 99999) setAmount(amounts);
-              }}
+              className="border border-green-300 bg-gray-900 w-28 rounded-lg px-2"
             />
             <input
               type="submit"
               value="Update"
-              onClick={() => update.mutate({ name: item.name, amount: amount })}
+              onClick={() => {
+                const amount = parseInt(
+                  (
+                    document.getElementById(
+                      item.name + "amount"
+                    ) as HTMLInputElement
+                  ).value
+                );
+
+                if (amount > 0 && amount <= 99999)
+                  update.mutate({ name: item.name, amount: amount });
+              }}
             />
           </form>
-        </div>
-        <div className="flex flex-row gap-2">
-          <button className={buttonCSS} onClick={() => addOne.mutate(item)}>
-            +
-          </button>
-          <button className={buttonCSS} onClick={() => removeOne.mutate(item)}>
-            -
-          </button>
         </div>
       </div>
     </div>

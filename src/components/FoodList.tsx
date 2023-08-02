@@ -1,5 +1,5 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getList, getCart, createItem } from "../api/functions";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getList } from "../api/functions";
 import StoreItem from "./StoreItem";
 
 interface Props {

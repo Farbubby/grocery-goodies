@@ -1,5 +1,5 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { getCart, deleteItem, addItem, removeItem } from "../api/functions";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getCart } from "../api/functions";
 import CartItem from "./CartItem";
 
 interface Props {
@@ -38,7 +38,7 @@ function Cart({ state, close }: Props) {
         <div className="flex flex-row-reverse p-8 text-xl mb-8">
           <button onClick={() => close()}>X</button>
         </div>
-        <div className="flex flex-col justify-center px-8 gap-4">{list}</div>
+        <div className="flex flex-col justify-center px-8 gap-8">{list}</div>
       </div>
     </>
   );
