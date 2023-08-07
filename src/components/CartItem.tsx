@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateItem, deleteItem } from "../api/functions";
+import { useState } from "react";
 
 interface Props {
   item: {
@@ -13,6 +14,8 @@ interface Props {
 function CartItem({ item }: Props) {
   const buttonCSS =
     " px-2 border border-green-300 rounded-full hover:text-black hover:bg-green-300 duration-200";
+
+  const [amount, setAmount] = useState(1);
 
   const queryClient = useQueryClient();
 
@@ -49,20 +52,17 @@ function CartItem({ item }: Props) {
               type="number"
               min="1"
               max="99999"
+              maxLength={5}
               className="border border-green-300 bg-gray-900 w-28 rounded-lg px-2"
+              onChange={(e) => {
+                e.preventDefault();
+                setAmount(parseInt(e.target.value));
+              }}
             />
             <input
               type="submit"
               value="Update"
               onClick={() => {
-                const amount = parseInt(
-                  (
-                    document.getElementById(
-                      item.name + "amount"
-                    ) as HTMLInputElement
-                  ).value
-                );
-
                 if (amount > 0 && amount <= 99999)
                   update.mutate({ name: item.name, amount: amount });
               }}
