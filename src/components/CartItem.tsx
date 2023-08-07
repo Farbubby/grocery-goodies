@@ -20,7 +20,7 @@ function CartItem({ item }: Props) {
   const queryClient = useQueryClient();
 
   const update = useMutation({
-    mutationFn: (data: any) => updateItem(data),
+    mutationFn: (data: { name: string; amount: number }) => updateItem(data),
     onSuccess: () => {
       queryClient.invalidateQueries(["cart"]);
     },

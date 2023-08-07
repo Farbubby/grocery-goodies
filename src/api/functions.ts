@@ -28,12 +28,12 @@ export function deleteItem(data: any) {
   }).then((res) => console.log(res));
 }
 
-export function updateItem(data: any) {
+export function updateItem(data: { name: string; amount: number }) {
   return fetch("http://localhost:3000/updateitem", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify({ name: data.name, amount: data.amount }),
   }).then((res) => console.log(res));
 }
